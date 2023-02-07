@@ -1,0 +1,17 @@
+a {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.main {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+/* footer{
+  margin-top: auto;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
