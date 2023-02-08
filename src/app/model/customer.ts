@@ -1,7 +1,7 @@
 export class Customer {
-    custName: string = '';
-    custUsername: string = '';
-    custPassword: string = '';
+    fullname: string = '';
+    username: string = '';
+    password: string = '';
 
     constructor() { }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
+import { RegisterService } from '../service/register.service';
 
 
 @Component({
@@ -15,11 +16,11 @@ export class RegistrationComponent implements OnInit{
 
   customer: Customer = new Customer();
 
-  constructor(private _formBuilder: FormBuilder, private router: Router) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router, private registerService: RegisterService) { }
 
   ngOnInit(): void {
     this.customerForm = this._formBuilder.group({
-      name: ['', Validators.required],
+      fullname: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
@@ -28,9 +29,10 @@ export class RegistrationComponent implements OnInit{
       validators:this.mustMatch('password', 'confirmPassword')
     }
 
-    )
+    );
   }
 
+  //makes sure that password and confirm password match
   mustMatch(password: any, confirmPassword: any){
     return(formGroup: FormGroup) => {
       const passwordControl = formGroup.controls[password];
@@ -52,8 +54,9 @@ export class RegistrationComponent implements OnInit{
 
     if(this.customerForm.valid) {
       console.log(this.customer);
-      this.router.navigate(['/home']);
+      this.registerService.registerCustomer(this.customer).subscribe();
       alert("Registered Successfully");
+      this.router.navigate(['/home']);
     }
 
   }
