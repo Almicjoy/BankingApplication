@@ -3,16 +3,16 @@
   <form [formGroup]="customerForm">
 
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" formControlName="name" [(ngModel)]="customer.custName">
-        <div *ngIf="submitted && f.name.errors" class="alert alert-danger" role="alert">
+        <label for="fullname">Name</label>
+        <input type="text" class="form-control" formControlName="fullname" [(ngModel)]="customer.fullname">
+        <div *ngIf="submitted && f.fullname.errors" class="alert alert-danger" role="alert">
             Name is required
         </div>
       </div>
 
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" formControlName="username" [(ngModel)]="customer.custUsername">
+        <input type="text" class="form-control" formControlName="username" [(ngModel)]="customer.username">
         <div *ngIf="submitted && f.username.errors" class="alert alert-danger" role="alert">
           Username is required
         </div>
@@ -20,7 +20,7 @@
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" formControlName="password" [(ngModel)]="customer.custPassword">
+        <input type="password" class="form-control" formControlName="password" [(ngModel)]="customer.password">
         <div *ngIf="submitted && f.password.errors" class="alert alert-danger" role="alert">
           Password is required
         </div>
