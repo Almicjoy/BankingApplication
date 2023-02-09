@@ -1,19 +1,24 @@
 <h4>Login</h4>
-<form>
+<form [formGroup]="loginForm">
   <div class="form-group">
-    <p>
-      <label for="username">Enter Username: </label>
-      <input type="text" name="username" class="form-control">
-    </p>
+
+    <label for="username">Enter Username: </label>
+    <input type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="customer.username">
+    <div *ngIf="submitted && f.username.errors" class="alert alert-danger" role="alert">
+      Username is required
+    </div>
+
   </div>
   <div class="form-group">
-    <p>
-      <label for="password">Enter Password: </label>
-      <input type="password" name="password" class="form-control">
-    </p>
+    <label for="password">Enter Password: </label>
+    <input type="password" name="password" class="form-control" formControlName="password" [(ngModel)]="customer.password">
+    <div *ngIf="submitted && f.password.errors" class="alert alert-danger" role="alert">
+      Password is required
+    </div>
   </div>
   <div class="d-inline-block">
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary" (click)="loginCustomer()">Login</button>
+    <button type="reset" class="btn btn-secondary" (click)="reset()">Clear</button>
     <a class="btn-link p-4">Forgot your password?</a>
   </div>
 </form>
