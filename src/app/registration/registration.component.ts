@@ -20,7 +20,8 @@ export class RegistrationComponent implements OnInit{
 
   ngOnInit(): void {
     this.customerForm = this._formBuilder.group({
-      fullname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
@@ -56,7 +57,7 @@ export class RegistrationComponent implements OnInit{
       console.log(this.customer);
       this.registerService.registerCustomer(this.customer).subscribe();
       alert("Registered Successfully");
-      this.router.navigate(['/home']);
+      this.router.navigate(['/securityQuestions']);
     }
 
   }

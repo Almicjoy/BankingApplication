@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { SecurityQuestionsComponent } from './security-questions/security-questions.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CustomerDashboardComponent } from './customer-dashboard/customer-dashbo
     HomeComponent,
     RegistrationComponent,
     LoginComponent,
-    CustomerDashboardComponent
+    CustomerDashboardComponent,
+    SecurityQuestionsComponent
   ],
   imports: [
     BrowserModule,

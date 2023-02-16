@@ -6,6 +6,7 @@ import { LoginService } from '../service/login.service';
 import { map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginRequest } from '../model/loginRequest';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit{
 
   submitted: boolean = false;
 
-  customer: Customer = new Customer();
+  loginRequest: LoginRequest = new LoginRequest();
 
   responseStatus: number = 0;
 
@@ -34,8 +35,8 @@ export class LoginComponent implements OnInit{
   loginCustomer(): void {
     this.submitted = true;
     if(this.loginForm.valid) {
-      console.log(this.customer);
-      this.loginService.loginCustomer(this.customer).subscribe(response => {
+      console.log(this.loginRequest);
+      this.loginService.loginCustomer(this.loginRequest).subscribe(response => {
         alert("Login Successful");
         this.router.navigate(['/customerDashboard']);
       }, error => {

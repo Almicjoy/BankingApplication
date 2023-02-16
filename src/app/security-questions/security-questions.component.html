@@ -1,0 +1,40 @@
+<div>
+  <h4>Security Questions</h4>
+  <form [formGroup]="securityQuestionForm">
+
+
+    <div class="form-group">
+      <label for="question1">Select Question</label>
+      <select name="question1" id="question1" class="form-control" >
+        <option *ngFor="let question of securityQuestionList">{{question.question}}</option>
+      </select>
+      <label for="answer1">Answer: </label>
+      <input type="text" id="answer1" name="answer1" class="form-control">
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <label for="question2">Select Question</label>
+      <select name="question2" id="question2" class="form-control" >
+        <option *ngFor="let question of securityQuestionList" [ngValue]="question.id">{{question.question}}</option>
+      </select>
+      <label for="answer2">Answer: </label>
+      <input type="text" id="answer2" name="answer2" class="form-control">
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <label for="question3">Select Question</label>
+      <select name="question3" id="question3" class="form-control" >
+        <option *ngFor="let question of securityQuestionList">{{question.question}}</option>
+      </select>
+      <label for="answer3">Answer: </label>
+      <input type="text" id="answer3" name="answer3" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Submit</button>
+
+  </form>
+</div>
