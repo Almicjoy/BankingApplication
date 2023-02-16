@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Database Login
 
-Username: root  Password: 12345
+Username: root  Password: 12345 Database name: trial
