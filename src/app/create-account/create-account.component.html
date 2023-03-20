@@ -1,0 +1,45 @@
+<div class="container center">
+  <h4 style="text-align: center;">Create Account</h4>
+
+  <div class="form-area bg-light border">
+    <form [formGroup]="accountForm">
+
+      <div class="form-group">
+        <label for="deposit"><b>Initial Deposit:</b></label>
+        <input type="number" class="form-control" formControlName="deposit" [(ngModel)]="deposit"
+        min="0" max="10000" step="any">
+        <div *ngIf="submitted && f.deposit.errors" class="alert alert-danger" role="alert">
+            Deposit is required
+        </div>
+      </div>
+      <hr>
+
+      <p><b>Account Type:</b></p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accountType" id="checking"
+        value="checking" formControlName="accountType" [(ngModel)]="accountType">
+        <label class="form-check-label" for="checking">
+          Checking Account
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accountType" id="saving"
+        value="saving" formControlName="accountType" [(ngModel)]="accountType">
+        <label class="form-check-label" for="saving">
+          Saving Account
+        </label>
+      </div>
+      <div *ngIf="submitted && f.accountType.errors" class="alert alert-danger" role="alert">
+        Must select account type
+      </div>
+      <hr>
+
+
+      <button type="submit" class="btn btn-primary" (click)=onSubmit()>Create</button>
+
+    </form>
+  </div>
+
+
+</div>
+

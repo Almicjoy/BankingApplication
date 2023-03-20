@@ -1,1 +1,52 @@
-<p>customer-dashboard works!</p>
+
+ <!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white back">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <h4 class="welcome">Welcome </h4>
+        <hr>
+        <a routerLink="accounts" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Accounts</span>
+        </a>
+        <a
+          routerLink="createAccount"
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+        >
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Create Account</span>
+        </a>
+        <a routerLink="addBeneficiary" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Beneficiary</span>
+        </a>
+        <a routerLink="removeBeneficiary" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-lock fa-fw me-3"></i><span>Beneficiary Management</span></a
+        >
+        <a routerLink="transferMoney" class="list-group-item list-group-item-action py-2 ripple"
+          ><i class="fas fa-chart-line fa-fw me-3"></i><span>Transfer Money</span></a
+        >
+        <a routerLink="viewStatement" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-pie fa-fw me-3"></i><span>View Statement</span>
+        </a>
+        <a routerLink="updateProfile" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-pie fa-fw me-3"></i><span>Manage Profile</span>
+        </a>
+
+
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+</header>
+
+<!--Main layout-->
+<main>
+  <div class="container pt-4 scroll">
+    <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+  </div>
+</main>
+<!--Main layout-->
+
+
+

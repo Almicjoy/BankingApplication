@@ -1,0 +1,59 @@
+<div class="container center">
+  <h4 style="text-align: center;">Bank Statements</h4>
+  <div class="form-area bg-light border">
+    <form [formGroup]="chooseAccountForm">
+      <h6>Select Account:</h6>
+      <table>
+        <tr>
+          <td >
+            <select formControlName="accountId" [(ngModel)]="accountId" style="min-width: 300px;" required>
+              <option *ngFor="let account of accounts" [ngValue]="account.accountNumber" >{{account.accountNumber}}</option>
+            </select>
+          </td>
+          <td>
+            <input type="submit" class="btn btn-primary" value="Show" (click)="onSubmit()">
+          </td>
+        </tr>
+
+      </table>
+    </form>
+      <hr>
+      <div *ngIf="selectedAccount.id != 0" class="statement-area">
+        <div style="display:block">
+          <p class="left"><b>Account number: </b>{{selectedAccount.accountNumber}}</p>
+          <p class="left"><b>Customer name:</b> {{selectedAccount.firstname}} {{selectedAccount.lastname}}</p>
+          <p class="right"><b>Balance:</b> {{selectedAccount.balance}}</p>
+        </div>
+        <hr>
+        <div style="display:block; text-align: center;">
+          <h5 class="tableheading">Account Details</h5>
+        </div>
+        <table class="table bg-white p-3">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Reference</th>
+              <th>Amount</th>
+              <th>Db/Cr</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaction of selectedAccount.transactions">
+              <td>{{transaction.date}}</td>
+              <td>{{transaction.reference}}</td>
+              <td>{{transaction.amount}}</td>
+              <td>{{transaction.dbcr}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="selectedAccount.id == 0" class="statement-area middle">
+        <h5>No Account Selected</h5>
+      </div>
+
+
+
+
+
+  </div>
+</div>

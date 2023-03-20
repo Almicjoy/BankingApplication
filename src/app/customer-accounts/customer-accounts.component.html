@@ -1,0 +1,18 @@
+<div class="container">
+  <h4 class="center">Accounts</h4>
+
+  <div class="account-section border bg-light" *ngFor="let account of accounts">
+    <div class="account-type" *ngIf="account.accountType == 'ACCOUNT_SAVING'">Saving Account
+      <div class="approved" *ngIf="account.approved == 'no'"> [not approved]</div>
+    </div>
+    <div class="account-type" *ngIf="account.accountType == 'ACCOUNT_CHECKING'">Checking Account
+      <div class="approved" *ngIf="account.approved == 'no'"> [not approved]</div>
+    </div>
+    <div class="account-info">
+      <div class="account-number">Acct. {{account.accountNumber}}</div>
+      <div class="account-balance">Available balance: USD ${{account.balance}}.</div>
+    </div>
+
+  </div>
+</div>
+

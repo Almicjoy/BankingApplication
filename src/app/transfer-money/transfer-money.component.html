@@ -1,0 +1,42 @@
+<div class="container center">
+  <h4 style="text-align: center;">Make a Transfer</h4>
+  <div class="form-area bg-light border">
+    <form [formGroup]="transferForm">
+      <h6>Select account:</h6>
+      <table class="table table-bordered bg-white">
+        <thead>
+          <tr>
+            <th scope="col">Account Number</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Account Type</th>
+            <th scope="col">Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of accounts">
+            <th scope="row">{{account.accountNumber}}</th>
+            <td>{{account.balance}}</td>
+            <td>{{account.accountType}}</td>
+            <td><input type="radio" [value]="account.accountNumber" formControlName="fromAccNumber" [(ngModel)]="transfer.fromAccNumber"></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <hr>
+      <label for="toAccNumber"><h6>Select Beneficiary:</h6></label>
+      <select name="toAccNumber" id="toAccNumber" class="form-control" formControlName="toAccNumber" [(ngModel)]="transfer.toAccNumber">
+        <option *ngFor="let beneficiary of beneficiaries" [ngValue]="beneficiary.accountNumber">{{beneficiary.accountNumber}}</option>
+      </select>
+      <hr>
+      <label><h6>Enter Amount:</h6></label>
+      <input type="number" class="form-control" formControlName="amount" [(ngModel)]="transfer.amount">
+
+      <label><h6>Reason for Transfer:</h6></label>
+      <input type="text" class="form-control" formControlName="reason" [(ngModel)]="transfer.reason">
+      <input type="submit" value="Transfer" class="btn btn-primary" (click)="onSubmit()">
+    </form>
+  </div>
+
+
+
+</div>

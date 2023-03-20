@@ -1,2 +1,15 @@
 
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.box {
+  width: 50%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+/* body { overflow-x: scroll; } */

@@ -1,40 +1,60 @@
-<div>
+<div class="container box">
   <h4>Security Questions</h4>
+  <!-- <app-registration (sendId)="getRegistrationData($event)"></app-registration> -->
+  <!-- <button (click)="sendValues"> Send Data </button>  -->
   <form [formGroup]="securityQuestionForm">
 
 
     <div class="form-group">
       <label for="question1">Select Question</label>
-      <select name="question1" id="question1" class="form-control" >
-        <option *ngFor="let question of securityQuestionList">{{question.question}}</option>
+      <select name="question1" id="question1" class="form-control" formControlName="question1" [(ngModel)]="securityQuestion1.question">
+        <option *ngFor="let question of securityQuestionList" [ngValue]="question">{{question.question}}</option>
       </select>
+      <div *ngIf="submitted && f.question1.errors" class="alert alert-danger" role="alert">
+        Security questions must be different
+      </div>
       <label for="answer1">Answer: </label>
-      <input type="text" id="answer1" name="answer1" class="form-control">
+      <input type="text" id="answer1" name="answer1" class="form-control" formControlName="answer1" [(ngModel)]="securityQuestion1.answer">
+      <div *ngIf="submitted && f.answer1.errors" class="alert alert-danger" role="alert">
+        Answer must not be blank
+      </div>
     </div>
 
     <hr>
 
     <div class="form-group">
       <label for="question2">Select Question</label>
-      <select name="question2" id="question2" class="form-control" >
-        <option *ngFor="let question of securityQuestionList" [ngValue]="question.id">{{question.question}}</option>
+      <select name="question2" id="question2" class="form-control" formControlName="question2" [(ngModel)]="securityQuestion2.question">
+        <option *ngFor="let question of securityQuestionList" [ngValue]="question">{{question.question}}</option>
       </select>
+      <div *ngIf="submitted && f.question2.errors" class="alert alert-danger" role="alert">
+        Security questions must be different
+      </div>
       <label for="answer2">Answer: </label>
-      <input type="text" id="answer2" name="answer2" class="form-control">
+      <input type="text" id="answer2" name="answer2" class="form-control" formControlName="answer2" [(ngModel)]="securityQuestion2.answer">
+      <div *ngIf="submitted && f.answer1.errors" class="alert alert-danger" role="alert">
+        Answer must not be blank
+      </div>
     </div>
 
     <hr>
 
     <div class="form-group">
       <label for="question3">Select Question</label>
-      <select name="question3" id="question3" class="form-control" >
-        <option *ngFor="let question of securityQuestionList">{{question.question}}</option>
+      <select name="question3" id="question3" class="form-control" formControlName="question3" [(ngModel)]="securityQuestion3.question">
+        <option *ngFor="let question of securityQuestionList" [ngValue]="question">{{question.question}}</option>
       </select>
+      <div *ngIf="submitted && f.question2.errors" class="alert alert-danger" role="alert">
+        Security questions must be different
+      </div>
       <label for="answer3">Answer: </label>
-      <input type="text" id="answer3" name="answer3" class="form-control">
+      <input type="text" id="answer3" name="answer3" class="form-control" formControlName="answer3" [(ngModel)]="securityQuestion3.answer">
+      <div *ngIf="submitted && f.answer1.errors" class="alert alert-danger" role="alert">
+        Answer must not be blank
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <button type="submit" class="btn btn-primary" (click)=onSubmit()>Submit</button>
 
   </form>
 </div>

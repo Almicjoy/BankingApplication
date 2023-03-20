@@ -1,0 +1,48 @@
+<div class="container center">
+  <h4 style="text-align: center;">Manage your Profile</h4>
+  <div class="form-area bg-light border rounded">
+    <form [formGroup]="updateProfileForm" class="form-horizontal">
+      <h5>Personal Information</h5>
+      <hr>
+      <table class="table table-borderless">
+        <tr>
+          <th><label>Customer ID: </label></th>
+          <td><input type="text" [value]="customer.id" class="border rounded p-1 m-3 bg-white" readonly></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><label>Full Name: </label></th>
+          <td><input type="text" [value]="customer.firstname + ' ' + customer.lastname" class="border rounded p-1 m-3 bg-white" readonly></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><label>Phone number: </label></th>
+          <td><input type="text" [value]="customer.phone" class="border rounded p-1 m-3 bg-white" formControlName="phone" [(ngModel)]="profileInfo.phone"></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><label>PAN: </label></th>
+          <td><input type="text" [value]="customer.pan" class="border rounded p-1 m-3 bg-white" formControlName="pan" [(ngModel)]="profileInfo.pan"></td>
+          <th><label>Upload PAN: </label></th>
+          <td><input type="file" class="border rounded p-1 m-3 bg-white" value="pan" #panFile
+            (change)="onPanFileSelected($event)"></td>
+        </tr>
+        <tr>
+          <th><label>AADHAR: </label></th>
+          <td><input type="text" [value]="customer.aadhar" class="border rounded p-1 m-3 bg-white" formControlName="aadhar" [(ngModel)]="profileInfo.aadhar"></td>
+          <th><label>Upload AADHAR: </label></th>
+          <td><input type="file" class="border rounded p-1 m-3 bg-white" value="aadhar" #aadharFile
+            (change)="onAadharFileSelected($event)"></td>
+        </tr>
+      </table>
+      <input type="submit" class="btn btn-primary space" value="Apply Changes" (click)="onSubmit()">
+    </form>
+    <h5>Security Information</h5>
+    <hr>
+    <button style="display: block;" class="space" (click)="navToSecurityQuestions()">Click here to change security questions</button>
+    <!-- <button style="display: block;" class="space">Click here to change your password</button> -->
+  </div>
+</div>

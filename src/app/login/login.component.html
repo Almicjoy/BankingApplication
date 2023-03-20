@@ -1,27 +1,30 @@
-<h4>Login</h4>
-<form [formGroup]="loginForm">
-  <div class="form-group">
+<div class="container">
+  <h4>Login</h4>
+  <form [formGroup]="loginForm">
+    <div class="form-group">
 
-    <label for="username">Enter Username: </label>
-    <input type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="loginRequest.username">
-    <div *ngIf="submitted && f.username.errors" class="alert alert-danger" role="alert">
-      Username is required
-    </div>
+      <label for="username">Enter Username: </label>
+      <input type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="loginRequest.username">
+      <div *ngIf="submitted && f.username.errors" class="alert alert-danger" role="alert">
+        Username is required
+      </div>
 
-  </div>
-  <div class="form-group">
-    <label for="password">Enter Password: </label>
-    <input type="password" name="password" class="form-control" formControlName="password" [(ngModel)]="loginRequest.password">
-    <div *ngIf="submitted && f.password.errors" class="alert alert-danger" role="alert">
-      Password is required
     </div>
+    <div class="form-group">
+      <label for="password">Enter Password: </label>
+      <input type="password" name="password" class="form-control" formControlName="password" [(ngModel)]="loginRequest.password">
+      <div *ngIf="submitted && f.password.errors" class="alert alert-danger" role="alert">
+        Password is required
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <button type="submit" class="btn btn-primary" (click)="loginCustomer()">Login</button>
+      <button type="reset" class="btn btn-secondary" (click)="reset()">Clear</button>
+      <a class="btn-link p-4" routerLink="/forgotPassword">Forgot your password?</a>
+    </div>
+  </form>
+  <div class="registerLink">
+    <p> Not a customer? <a routerLink="/registration">Register Here</a> </p>
   </div>
-  <div class="d-inline-block">
-    <button type="submit" class="btn btn-primary" (click)="loginCustomer()">Login</button>
-    <button type="reset" class="btn btn-secondary" (click)="reset()">Clear</button>
-    <a class="btn-link p-4">Forgot your password?</a>
-  </div>
-</form>
-<div class="registerLink">
-  <p> Not a customer? <a routerLink="/registration">Register Here</a> </p>
+
 </div>

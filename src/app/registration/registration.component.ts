@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from '../model/customer';
 import { RegisterService } from '../service/register.service';
@@ -10,13 +10,26 @@ import { RegisterService } from '../service/register.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit{
+export class RegistrationComponent implements OnInit {
   customerForm: any;
   submitted: boolean = false;
 
   customer: Customer = new Customer();
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private registerService: RegisterService) { }
+  customerAfterRegister: Customer = new Customer();
+
+  @Input() userId: number = 0;
+  @Output() sendId:EventEmitter<number>= new EventEmitter();
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private registerService: RegisterService
+  ) { }
+
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   ngOnInit(): void {
     this.customerForm = this._formBuilder.group({
@@ -55,11 +68,19 @@ export class RegistrationComponent implements OnInit{
 
     if(this.customerForm.valid) {
       console.log(this.customer);
-      this.registerService.registerCustomer(this.customer).subscribe();
+      this.registerService.registerCustomer(this.customer).subscribe(result => {
+        this.customerAfterRegister = result;
+        console.log("Customer id: " + this.customerAfterRegister.id)
+        this.router.navigate(['/securityQuestions'], {state: {customer: this.customerAfterRegister}});
+      });
       alert("Registered Successfully");
-      this.router.navigate(['/securityQuestions']);
+
     }
 
+  }
+
+  sendValues(){
+    this.sendId.emit(this.userId);
   }
 
   reset(): void {

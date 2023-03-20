@@ -1,0 +1,59 @@
+<div class="container center">
+  <h4 style="text-align: center;">Add Beneficiary</h4>
+
+  <div class="form-area bg-light border">
+    <form [formGroup]="addBeneficiaryForm">
+
+      <div class="form-group">
+        <label for="accountNumber"><b>Enter Account Number:</b></label>
+        <input type="number" class="form-control" formControlName="accountNumber" [(ngModel)]="beneficiary.accountNumber">
+        <div *ngIf="submitted && f.accountNumber.errors.required" class="alert alert-danger" role="alert">
+            Account number is required
+        </div>
+        <div *ngIf="submitted && f.accountNumber.errors.minLength" class="alert alert-danger" role="alert">
+          Account number must be length 14
+        </div>
+        <div *ngIf="submitted && f.accountNumber.errors.maxLength" class="alert alert-danger" role="alert">
+          Account number must be length 14
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmAccountNumber"><b>Confirm Account Number:</b></label>
+        <input type="number" class="form-control" formControlName="confirmAccountNumber">
+        <div *ngIf="submitted && f.confirmAccountNumber.errors.required" class="alert alert-danger" role="alert">
+          Must confirm account number
+        </div>
+        <div *ngIf="submitted && f.confirmAccountNumber.errors.mustMatch" class="alert alert-danger" role="alert">
+          Account numbers must match
+        </div>
+      </div>
+      <hr>
+
+      <p><b>Select Account Type:</b></p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accountType" id="checking"
+        value="checking" formControlName="accountType" [(ngModel)]="beneficiary.accountType">
+        <label class="form-check-label" for="checking">
+          Checking Account
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accountType" id="saving"
+        value="saving" formControlName="accountType" [(ngModel)]="beneficiary.accountType">
+        <label class="form-check-label" for="saving">
+          Saving Account
+        </label>
+      </div>
+      <div *ngIf="submitted && f.accountType.errors" class="alert alert-danger" role="alert">
+        Must select account type
+      </div>
+      <hr>
+
+
+      <button type="submit" class="btn btn-primary" (click)=onSubmit()>Create</button>
+
+    </form>
+  </div>
+
+
+</div>

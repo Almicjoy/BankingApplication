@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../model/loginRequest';
+import { JwtToken } from '../model/jwtToken';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit{
 
   responseStatus: number = 0;
 
+  jwtToken: JwtToken = new JwtToken();
+
   constructor(private _formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,9 +41,14 @@ export class LoginComponent implements OnInit{
       console.log(this.loginRequest);
       this.loginService.loginCustomer(this.loginRequest).subscribe(response => {
         alert("Login Successful");
-        this.router.navigate(['/customerDashboard']);
+        console.log(response);
+        this.router.navigate(['/customerDashboard'], {state: {jwtToken: response}})
+        .then(() => {
+          window.location.reload();
+        });
       }, error => {
-        alert("Username or password is incorrect");
+        console.log(error.error);
+        alert(error.error.message);
         this.reset();
       });
     }

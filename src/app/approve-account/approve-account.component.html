@@ -1,0 +1,23 @@
+<div>
+  <hr>
+  <h4 class="center">Unapproved Accounts</h4>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Account Type</th>
+        <th>Init. Deposit</th>
+        <th>Approve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td *ngIf="account.approved == 'no'">{{account.accountNumber}}</td>
+        <td *ngIf="account.approved == 'no'">{{account.accountType}}</td>
+        <td *ngIf="account.approved == 'no'">{{account.balance}}</td>
+        <td *ngIf="account.approved == 'no'"><button class="btn btn-primary" (click)="approveAccount(account.id)">Approve</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
