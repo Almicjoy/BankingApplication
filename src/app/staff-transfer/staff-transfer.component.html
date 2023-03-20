@@ -1,0 +1,39 @@
+<div class="container m-top center">
+  <h5>Make Transfer</h5>
+  <div class="bg-light border rounded form-part">
+    <form [formGroup]="transferForm">
+      <div class="form-group">
+        <label for="fromAccNum">From Account Number</label>
+        <input type="number" class="form-control" formControlName="fromAccNum" [(ngModel)]="transfer.fromAccNumber">
+        <div *ngIf="submitted && f.fromAccNum.errors" class="alert alert-danger" role="alert">
+          Field is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="toAccNum">To Account Number</label>
+        <input type="number" class="form-control" formControlName="toAccNum" [(ngModel)]="transfer.toAccNumber">
+        <div *ngIf="submitted && f.toAccNum.errors" class="alert alert-danger" role="alert">
+          Field is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" formControlName="amount" [(ngModel)]="transfer.amount">
+        <div *ngIf="submitted && f.amount.errors" class="alert alert-danger" role="alert">
+          Field is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="reason">Remarks</label>
+        <input type="text" class="form-control" formControlName="reason" [(ngModel)]="transfer.reason">
+        <div *ngIf="submitted && f.reason.errors" class="alert alert-danger" role="alert">
+          Field is required
+        </div>
+      </div>
+      <div class="form-group m-top">
+        <input type="submit" class="btn btn-primary" (click)="onSubmit()">
+      </div>
+    </form>
+  </div>
+</div>

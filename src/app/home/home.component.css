@@ -1,9 +1,13 @@
 img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .bankLogo {
   display: flex;
   justify-content: center;
+}
+
+.padded {
+  padding: 3%;
 }

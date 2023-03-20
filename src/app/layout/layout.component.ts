@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../service/login.service';
+import { StaffLoginService } from '../service/staff-login.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
 
+  constructor (
+    public loginService: LoginService,
+    public staffLoginService: StaffLoginService
+  ) {
+
+  }
 }

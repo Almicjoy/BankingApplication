@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light front">
   <a class="navbar-brand" routerLink="home">BankingApp Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
     <div class="d-flex ms-auto">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link">Staff Corner</a>
+          <a class="nav-link" routerLink="staffLogin">Staff Corner</a>
         </li>
       </ul>
     </div>
@@ -46,56 +46,8 @@
   </div>
 </nav>
 
-<main class="container main">
+<!-- <main class="container main">
   <router-outlet></router-outlet>
-</main>
+</main> -->
 
-<footer class="bg-light text-center">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
 
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form5Example27" class="form-control" />
-              <label class="form-label" for="form5Example27">Email address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
-  </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>

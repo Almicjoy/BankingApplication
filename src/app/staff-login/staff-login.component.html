@@ -1,0 +1,29 @@
+<div class="container bg-light border rounded box">
+  <h4>Staff Login</h4>
+  <form [formGroup]="loginForm">
+    <div class="form-group">
+
+      <label for="username">Enter Staff Username: </label>
+      <input type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="loginRequest.username">
+      <div *ngIf="submitted && f.username.errors" class="alert alert-danger" role="alert">
+        Username is required
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="password">Enter Staff Password: </label>
+      <input type="password" name="password" class="form-control" formControlName="password" [(ngModel)]="loginRequest.password">
+      <div *ngIf="submitted && f.password.errors" class="alert alert-danger" role="alert">
+        Password is required
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Login</button>
+    </div>
+  </form>
+  <div class="registerLink">
+    <p> Not staff? <a routerLink="/login">Login Here</a></p>
+  </div>
+
+</div>
+

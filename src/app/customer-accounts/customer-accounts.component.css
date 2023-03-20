@@ -1,0 +1,26 @@
+.center {
+  text-align: center;
+}
+
+.account-section {
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 1%;
+}
+.account-type {
+  background-color: rgb(63, 216, 124);
+  font-weight: 700;
+  font-size: large;
+  color: white;
+  padding: 1%;
+}
+.account-info {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.approved {
+  display: inline;
+}

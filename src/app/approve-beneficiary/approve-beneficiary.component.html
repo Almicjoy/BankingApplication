@@ -1,0 +1,23 @@
+<div>
+  <hr>
+  <h4 class="center">Unapproved Beneficiaries</h4>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Beneficiary Acc Number</th>
+        <th>Date Added</th>
+        <th>Approve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let beneficiary of beneficiaries">
+        <td>{{beneficiary.customer.firstname}} {{beneficiary.customer.lastname}}</td>
+        <td>{{beneficiary.accountNumber}}</td>
+        <td>{{beneficiary.dateAdded}}</td>
+        <td><button class="btn btn-primary" (click)="approve(beneficiary.id)">Approve</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

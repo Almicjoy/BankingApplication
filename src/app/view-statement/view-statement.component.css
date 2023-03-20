@@ -1,0 +1,25 @@
+.center {
+  width: 70%;
+  /* overflow-y: scroll; */
+}
+.form-area {
+  padding: 5%;
+}
+.statement-area {
+  min-height: 200px;
+}
+.middle {
+  text-align: center;
+  margin-top: 20%;
+}
+.tableheading {
+  display: inline;
+  padding-right: 2%;
+}
+.left {
+  display: inline;
+}
+.right {
+  display: inline;
+  float: right;
+}

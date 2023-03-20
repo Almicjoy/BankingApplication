@@ -1,0 +1,13 @@
+.center {
+
+  width: 50%;
+}
+
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+.form-area {
+  padding: 5%;
+}
