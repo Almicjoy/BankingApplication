@@ -12,9 +12,12 @@ export class AllLoggedInService {
   constructor() {
     const customerToken = sessionStorage.getItem('jwtToken');
     const staffToken = sessionStorage.getItem('staffToken');
-    console.log(staffToken);
-    console.log(customerToken == null && staffToken == null);
-    this._allLoggedOut$.next(customerToken == null && staffToken == null);
+    const adminToken = sessionStorage.getItem('adminToken');
+
+    this._allLoggedOut$.next(
+      customerToken == null
+      && staffToken == null
+      && adminToken == null);
 
 
   }

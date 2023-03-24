@@ -28,4 +28,11 @@ export class UserService {
   changeCustomerStatus(customer: Customer): Observable<String> {
     return this.http.put<String>('http://localhost:8080/api/staff/customer', customer);
   }
+
+  findAllStaff(): Observable<Customer[]> {
+    return this.http.get<Customer[]>('http://localhost:8080/api/admin/staff');
+  }
+  changeStaffStatus(staff: Customer): Observable<String> {
+    return this.http.put<String>('http://localhost:8080/api/admin/staff', staff);
+  }
 }

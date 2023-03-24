@@ -30,6 +30,10 @@ import { ApproveBeneficiaryComponent } from './approve-beneficiary/approve-benef
 import { ManageStatementComponent } from './manage-statement/manage-statement.component';
 import { ToggleCustomerComponent } from './toggle-customer/toggle-customer.component';
 import { StaffTransferComponent } from './staff-transfer/staff-transfer.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { CreateStaffComponent } from './create-staff/create-staff.component';
+import { ManageStaffComponent } from './manage-staff/manage-staff.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { StaffTransferComponent } from './staff-transfer/staff-transfer.componen
     ApproveBeneficiaryComponent,
     ManageStatementComponent,
     ToggleCustomerComponent,
-    StaffTransferComponent
+    StaffTransferComponent,
+    AdminDashboardComponent,
+    AdminLayoutComponent,
+    CreateStaffComponent,
+    ManageStaffComponent
   ],
   imports: [
     BrowserModule,

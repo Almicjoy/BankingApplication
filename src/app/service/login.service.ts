@@ -41,6 +41,7 @@ export class LoginService {
 
   logout() {
     sessionStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('id');
     this._isLoggedIn$.next(false);
     this._isNotLoggedIn$.next(true);
     this.router.navigate(['/home'])

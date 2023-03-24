@@ -18,6 +18,7 @@ export class RemoveBeneficiaryComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.userId = Number(sessionStorage.getItem('id'));
     this.beneficiaryService.getBeneficiaries(this.userId).subscribe(result => {
       this.beneficiaries = result;
     })

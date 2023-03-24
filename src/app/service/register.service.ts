@@ -19,4 +19,8 @@ export class RegisterService {
   findUser(username: String): Observable<Customer> {
     return this.http.get<Customer>("http://localhost:8080/api/test/findUserByUsername/" + username);
   }
+
+  registerStaff(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>('http://localhost:8080/api/admin/staff', customer);
+  }
 }

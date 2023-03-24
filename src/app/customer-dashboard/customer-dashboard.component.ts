@@ -26,6 +26,7 @@ const routes: Routes = [
 export class CustomerDashboardComponent implements OnInit{
 
   jwtToken: JwtToken = new JwtToken();
+  userId: number = 0;
 
   constructor(
     public loginService: LoginService,
@@ -34,16 +35,8 @@ export class CustomerDashboardComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.jwtToken = history.state.jwtToken;
-    this.dataService.sendData(this.jwtToken.id);
+    this.userId = Number(sessionStorage.getItem('id'));
+    console.log("hi" + this.userId);
   }
-
-  onOutletLoaded(component: CreateAccountComponent | CustomerAccountsComponent
-     | AddBeneficiaryComponent | RemoveBeneficiaryComponent | TransferMoneyComponent
-     | UpdateProfileComponent) {
-    component.userId = this.jwtToken.id;
-  }
-
-
 
 }

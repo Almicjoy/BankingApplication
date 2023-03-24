@@ -21,9 +21,10 @@ export class AddBeneficiaryComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.userId = Number(sessionStorage.getItem('id'));
     this.submitted = false;
     this.addBeneficiaryForm = this.formBuilder.group({
-      accountNumber: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
+      accountNumber: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(15), Validators.pattern('^[0-9]+$')]],
       confirmAccountNumber: ['', Validators.required],
       accountType: ['', Validators.required]
     }, {
@@ -52,10 +53,12 @@ export class AddBeneficiaryComponent implements OnInit{
     if(this.addBeneficiaryForm.valid){
       this.beneficiaryService.addBeneficiary(this.userId, this.beneficiary).subscribe(result => {
         alert("Beneficiary added. Awaiting approval.");
+        this.reset();
       }, error => {
-        alert("Beneficiary not added");
+        alert(error.error.message);
+        this.reset();
       });
-      this.reset();
+
     }
 
   }

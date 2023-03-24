@@ -41,7 +41,7 @@ export class UpdateProfileComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    this.userId = Number(sessionStorage.getItem('id'));
     this.updateProfileForm = this.formBuilder.group({
       phone: ['', Validators.required],
       pan: ['', Validators.required],

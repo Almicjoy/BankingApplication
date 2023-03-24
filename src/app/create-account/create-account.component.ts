@@ -31,7 +31,7 @@ export class CreateAccountComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("On Init");
+    this.userId = Number(sessionStorage.getItem('id'));
     this.accountForm = this.formBuilder.group({
       deposit: ['', Validators.required],
       accountType: ['', Validators.required]

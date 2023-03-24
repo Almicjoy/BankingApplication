@@ -1,0 +1,32 @@
+<div>
+  <hr>
+  <h5 class="center">Staff List</h5>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let _staff of staff">
+        <td>{{_staff.firstname}} {{_staff.lastname}}</td>
+        <td>{{_staff.username}}</td>
+        <td *ngIf="_staff.status == 'DISABLE'">
+          <div class="form-check form-switch" >
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+            (click)="setStatus(_staff.id, 'ENABLE')">
+          </div>
+        </td>
+        <td *ngIf="_staff.status == 'ENABLE'">
+          <div class="form-check form-switch" >
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+            (click)="setStatus(_staff.id, 'DISABLE')" checked>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

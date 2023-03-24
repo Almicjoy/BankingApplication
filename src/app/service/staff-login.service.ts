@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 export class StaffLoginService {
 
   private _isStaffLoggedIn$ = new BehaviorSubject<boolean>(false);
-  private _isStaffLoggedOut$ = new BehaviorSubject<boolean>(true);
   isStaffLoggedIn = this._isStaffLoggedIn$.asObservable();
-  isStaffLoggedOut = this._isStaffLoggedOut$.asObservable();
-  role: string = '';
+
+  private _isAdminLoggedIn$ = new BehaviorSubject<boolean>(false);
+  isAdminLoggedIn = this._isAdminLoggedIn$.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -26,29 +26,46 @@ export class StaffLoginService {
   ) {
     const token = sessionStorage.getItem('staffToken');
     this._isStaffLoggedIn$.next(!!token);
-    this._isStaffLoggedOut$.next(!token);
+
+    const adminToken = sessionStorage.getItem('adminToken');
+    this._isAdminLoggedIn$.next(!!adminToken);
   }
 
   loginStaff(loginRequest: LoginRequest): Observable<JwtToken> {
     return this.http.post<JwtToken>('http://localhost:8080/api/staff/authenticate', loginRequest).pipe(
       tap((response: any) => {
         this._isStaffLoggedIn$.next(true);
-        this._isStaffLoggedOut$.next(false);
         sessionStorage.setItem('staffToken', response.token);
       })
     );
+  }
+
+  loginAdmin(loginRequest: LoginRequest): Observable<JwtToken> {
+    return this.http.post<JwtToken>('http://localhost:8080/api/admin/authenticate', loginRequest).pipe(
+      tap((response: any) => {
+        this._isAdminLoggedIn$.next(true);
+        sessionStorage.setItem('adminToken', response.token);
+      })
+    )
   }
 
 
   logout() {
     sessionStorage.removeItem('staffToken');
     this._isStaffLoggedIn$.next(false);
-    this._isStaffLoggedOut$.next(true);
     this.router.navigate(['/home'])
     .then(() => {
       window.location.reload();
     });
+  }
 
+  adminLogout() {
+    sessionStorage.removeItem('adminToken');
+    this._isAdminLoggedIn$.next(false);
+    this.router.navigate(['/home'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 

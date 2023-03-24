@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export class Customer {
     id: number = 0;
     firstname: string = '';
@@ -8,6 +10,7 @@ export class Customer {
     aadhar: string = '';
     phone: string = '';
     status: string = '';
+    roles: Role[] = [];
 
     constructor() { }
 

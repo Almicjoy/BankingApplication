@@ -21,7 +21,7 @@ export class CustomerAccountsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("User id in oninit: " + this.userId);
+    this.userId = Number(sessionStorage.getItem('id'));
     this.accountService.getAccounts(this.userId).subscribe(result => {
       this.accounts = result;
     })
