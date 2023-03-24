@@ -9,8 +9,8 @@
       <div class="approved" *ngIf="account.approved == 'no'"> [not approved]</div>
     </div>
     <div class="account-info">
-      <div class="account-number">Acct. {{account.accountNumber}}</div>
-      <div class="account-balance">Available balance: USD ${{account.balance}}.</div>
+      <div class="account-number"><b>Acct.</b> {{account.accountNumber}}</div>
+      <div class="account-balance"><b>Available balance:</b> USD ${{account.balance.toFixed(2)}}.</div>
     </div>
 
   </div>

@@ -1,15 +1,18 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AddBeneficiaryComponent } from "./add-beneficiary/add-beneficiary.component";
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
 import { ApproveAccountComponent } from "./approve-account/approve-account.component";
 import { ApproveBeneficiaryComponent } from "./approve-beneficiary/approve-beneficiary.component";
 import { ChangePasswordComponent } from "./change-password/change-password.component";
 import { CreateAccountComponent } from "./create-account/create-account.component";
+import { CreateStaffComponent } from "./create-staff/create-staff.component";
 import { CustomerAccountsComponent } from "./customer-accounts/customer-accounts.component";
 import { CustomerDashboardComponent } from "./customer-dashboard/customer-dashboard.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { ManageStaffComponent } from "./manage-staff/manage-staff.component";
 import { ManageStatementComponent } from "./manage-statement/manage-statement.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { RemoveBeneficiaryComponent } from "./remove-beneficiary/remove-beneficiary.component";
@@ -54,8 +57,18 @@ const routes: Routes = [
       {path: 'approveAccount', component: ApproveAccountComponent},
       {path: 'approveBeneficiary', component: ApproveBeneficiaryComponent},
       {path: 'toggleCustomer', component: ToggleCustomerComponent}
-    ] },
-    { path: 'staffTransfer', component: StaffTransferComponent}
+    ]
+  },
+  { path: 'staffTransfer', component: StaffTransferComponent },
+  {
+    path: 'adminDashboard',
+    component: AdminDashboardComponent,
+    children: [
+      {path: '', redirectTo: 'manageStaff', pathMatch: 'full'},
+      {path: 'createStaff', component: CreateStaffComponent},
+      {path: 'manageStaff', component: ManageStaffComponent}
+    ]
+  }
 ]
 
 @NgModule({

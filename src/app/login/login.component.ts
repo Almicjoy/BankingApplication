@@ -38,16 +38,14 @@ export class LoginComponent implements OnInit{
   loginCustomer(): void {
     this.submitted = true;
     if(this.loginForm.valid) {
-      console.log(this.loginRequest);
       this.loginService.loginCustomer(this.loginRequest).subscribe(response => {
         alert("Login Successful");
-        console.log(response);
+        sessionStorage.setItem('id', response.id.toString());
         this.router.navigate(['/customerDashboard'], {state: {jwtToken: response}})
         .then(() => {
           window.location.reload();
         });
       }, error => {
-        console.log(error.error);
         alert(error.error.message);
         this.reset();
       });

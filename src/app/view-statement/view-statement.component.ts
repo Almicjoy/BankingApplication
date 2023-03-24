@@ -24,6 +24,7 @@ export class ViewStatementComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.userId = Number(sessionStorage.getItem('id'));
     this.accountService.getAccounts(this.userId).subscribe(result => {
       this.accounts = result;
     }, error => {
@@ -47,6 +48,18 @@ export class ViewStatementComponent implements OnInit{
         this.reset();
       })
     }
+  }
+
+  printPage() {
+    let print: any;
+    let printContent: any;
+    printContent = document.getElementById("print")?.innerHTML;
+    print = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    print.document.write(printContent);
+    print.document.close();
+    print.focus();
+    print.print();
+    print.close();
   }
 
   reset(): void {

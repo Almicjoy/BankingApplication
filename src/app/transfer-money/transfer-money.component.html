@@ -15,7 +15,7 @@
         <tbody>
           <tr *ngFor="let account of accounts">
             <th scope="row">{{account.accountNumber}}</th>
-            <td>{{account.balance}}</td>
+            <td>$ {{account.balance.toFixed(2)}}</td>
             <td>{{account.accountType}}</td>
             <td><input type="radio" [value]="account.accountNumber" formControlName="fromAccNumber" [(ngModel)]="transfer.fromAccNumber"></td>
           </tr>

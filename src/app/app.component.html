@@ -1,6 +1,7 @@
 <app-layout *ngIf="allLoggedIn.allLoggedOut | async"></app-layout>
 <app-logged-in-layout *ngIf="loginService.isLoggedIn | async"></app-logged-in-layout>
 <app-staff-layout *ngIf="staffLoginService.isStaffLoggedIn | async"></app-staff-layout>
+<app-admin-layout *ngIf="staffLoginService.isAdminLoggedIn | async"></app-admin-layout>
 
 <main>
   <router-outlet></router-outlet>

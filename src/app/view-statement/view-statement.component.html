@@ -1,4 +1,4 @@
-<div class="container center">
+<div class="container center" id="print">
   <h4 style="text-align: center;">Bank Statements</h4>
   <div class="form-area bg-light border">
     <form [formGroup]="chooseAccountForm">
@@ -16,15 +16,15 @@
         </tr>
       </table>
       <hr>
-      <div *ngIf="selectedAccount.id != 0" class="statement-area">
+      <div *ngIf="selectedAccount.id != 0" class="statement-area" id="statement-area">
         <div style="display:block">
           <p class="left"><b>Account number: </b>{{selectedAccount.accountNumber}}</p>
-          <p class="right"><b>Balance:</b> {{selectedAccount.balance}}</p>
+          <p class="right"><b>Balance:</b> $ {{selectedAccount.balance.toFixed(2)}}</p>
         </div>
         <hr>
         <div style="display:block; text-align: center;">
           <h5 class="tableheading">Account Details</h5>
-          <button class="tableheading">Download</button>
+          <button class="tableheading" (click)="printPage()">Download</button>
         </div>
         <table class="table bg-white p-3">
           <thead>
@@ -39,7 +39,7 @@
             <tr *ngFor="let transaction of selectedAccount.transactions">
               <td>{{transaction.date}}</td>
               <td>{{transaction.reference}}</td>
-              <td>{{transaction.amount}}</td>
+              <td>$ {{transaction.amount.toFixed(2)}}</td>
               <td>{{transaction.dbcr}}</td>
             </tr>
           </tbody>

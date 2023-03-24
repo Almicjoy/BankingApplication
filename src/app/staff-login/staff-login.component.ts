@@ -35,19 +35,27 @@ export class StaffLoginComponent implements OnInit{
   onSubmit(): void {
     this.submitted = true;
     if(this.loginForm.valid) {
-      console.log(this.loginRequest);
       this.loginService.loginStaff(this.loginRequest).subscribe(response => {
-        alert("Login Successful");
-        console.log(response);
+        alert("Staff Login Successful");
         this.router.navigate(['/staffDashboard'], {state: {jwtToken: response}})
         .then(() => {
           window.location.reload();
         });
-      }, error => {
-        console.log(error);
-        alert("Username or password is incorrect");
-        this.reset();
       });
+
+      this.loginService.loginAdmin(this.loginRequest).subscribe(response => {
+        alert("Admin Login Successful");
+        this.router.navigate(['/adminDashboard'], {state: {jwtToken: response}})
+        .then(() => {
+          window.location.reload();
+        });
+      });
+
+      const staffToken = sessionStorage.getItem('staffToken');
+      const adminToken = sessionStorage.getItem('adminToken');
+      if(adminToken == null && staffToken == null) {
+        this.loginForm.reset();
+      }
     }
   }
 

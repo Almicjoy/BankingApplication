@@ -33,6 +33,7 @@ export class TransferMoneyComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.userId = Number(sessionStorage.getItem('id'));
     this.accountService.getAccounts(this.userId).subscribe(result => {
       this.accounts = result;
     });
@@ -56,7 +57,8 @@ export class TransferMoneyComponent implements OnInit{
       this.transfer.byUser = this.customer.username;
       console.log("Transfer details: " + this.transfer);
       this.transferService.transferMoney(this.transfer).subscribe(result => {
-        alert("Transfer requested. Transaction will be completed shortly.");
+        alert("Transfer successful");
+        console.log(result);
       }, error => {
         console.log(error);
         alert(error.error.message);

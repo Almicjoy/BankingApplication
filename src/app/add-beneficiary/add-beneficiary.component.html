@@ -6,20 +6,26 @@
 
       <div class="form-group">
         <label for="accountNumber"><b>Enter Account Number:</b></label>
-        <input type="number" class="form-control" formControlName="accountNumber" [(ngModel)]="beneficiary.accountNumber">
-        <div *ngIf="submitted && f.accountNumber.errors.required" class="alert alert-danger" role="alert">
+        <input type="text" class="form-control" formControlName="accountNumber" [(ngModel)]="beneficiary.accountNumber">
+        <div *ngIf="submitted && f.accountNumber.errors">
+          <div *ngIf="f.accountNumber.errors.required" class="alert alert-danger" role="alert">
             Account number is required
+          </div>
+          <div *ngIf="f.accountNumber.errors.minlength" class="alert alert-danger" role="alert">
+            Account number must be length 14
+          </div>
+          <div *ngIf="f.accountNumber.errors.maxlength" class="alert alert-danger" role="alert">
+            Account number must be length 14
+          </div>
+          <div *ngIf="f.accountNumber.errors.pattern" class="alert alert-danger" role="alert">
+            Must enter numeric value
+          </div>
         </div>
-        <div *ngIf="submitted && f.accountNumber.errors.minLength" class="alert alert-danger" role="alert">
-          Account number must be length 14
-        </div>
-        <div *ngIf="submitted && f.accountNumber.errors.maxLength" class="alert alert-danger" role="alert">
-          Account number must be length 14
-        </div>
+
       </div>
       <div class="form-group">
         <label for="confirmAccountNumber"><b>Confirm Account Number:</b></label>
-        <input type="number" class="form-control" formControlName="confirmAccountNumber">
+        <input type="text" class="form-control" formControlName="confirmAccountNumber">
         <div *ngIf="submitted && f.confirmAccountNumber.errors.required" class="alert alert-danger" role="alert">
           Must confirm account number
         </div>
